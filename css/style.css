@@ -1,0 +1,307 @@
+  html, body {
+  margin: 0;
+  padding:0;
+  height: 100%
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.contentWrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+canvas {
+  width: 256px;
+  height: 256px;
+  border: 1px solid #dedede;
+  margin-left: 100px;
+
+  position: absolute;
+  left: 50%;
+  margin-left: 350px;
+  top: 50%;
+  margin-top: -261px;
+  z-index: -1;
+}
+body {
+  box-sizing: border-box;
+  padding: 160px 0 0 240px;
+}
+
+.houseWrapper {
+  width: 600px;
+  height: 100%;
+  /* background-color: #fff; */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -300px;
+  border: 1px solid #dedede;
+  display: flex;
+  flex-direction: column;
+}
+
+.floorWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  border-bottom: 10px solid #f0f0f0;
+}
+
+/* 门容器样式 */
+.doorWrap {
+  width: 25%;
+  height: 50%;
+  border: 1px solid #666;
+  perspective: 500px;
+  position: relative;
+  display: flex;
+}
+
+/* 左门右门的共有样式 */
+.leftDoor,
+.rightDoor {
+  width: 50%;
+  height: 100%;
+  background-color: rgb(194, 37, 37);
+  transition: 1.2s;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #333;
+}
+
+/* 设置旋转元素的基点，左边大门以左侧为基准点旋转 */
+.leftDoor {
+  transform-origin: left;
+}
+
+/* 设置旋转元素的基点，右边大门以右侧为基准点旋转 */
+.rightDoor {
+  transform-origin: right;
+}
+
+/* 当鼠标悬浮的时候，设置开门的幅度，左门往左侧开 */
+.doorWrap:hover .leftDoor {
+  transform: rotateY(-130deg);
+}
+
+/* 右门往右侧开 */
+.doorWrap:hover .rightDoor {
+  transform: rotateY(130deg);
+}
+
+/* 内容区的定位层级稍微低一些 */
+.content {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  /* background-color: #abf; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sky {
+  width: 100%;
+  /* height: 480px; */
+  height: 100%;
+  background: #007fd5;
+  position: relative;
+  overflow: hidden;
+  -webkit-animation: sky_background 50s ease-out infinite;
+  -moz-animation: sky_background 50s ease-out infinite;
+  -o-animation: sky_background 50s ease-out infinite;
+  animation: sky_background 50s ease-out infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.sky .clouds_one {
+  background: url("../images/cloud_one.png");
+  background-repeat: repeat-x;
+  position: absolute;
+  left: 0;
+  top: 0;
+  top: -10%;
+  height: 100%;
+  width: 300%;
+  -webkit-animation: cloud_one 50s linear infinite;
+  -moz-animation: cloud_one 50s linear infinite;
+  -o-animation: cloud_one 50s linear infinite;
+  animation: cloud_one 50s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.sky .clouds_two {
+  background: url("../images/cloud_two.png");
+  position: absolute;
+  background-repeat: repeat-x;
+  left: 0;
+  top: 0;
+  top: -10%;
+  height: 100%;
+  width: 300%;
+  -webkit-animation: cloud_two 75s linear infinite;
+  -moz-animation: cloud_two 75s linear infinite;
+  -o-animation: cloud_two 75s linear infinite;
+  animation: cloud_two 75s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.sky .clouds_three {
+  background: url("../images/cloud_three.png");
+  position: absolute;
+  background-repeat: repeat-x;
+  left: 0;
+  top: 0;
+  top: -10%;
+  height: 100%;
+  width: 300%;
+  -webkit-animation: cloud_three 100s linear infinite;
+  -moz-animation: cloud_three 100s linear infinite;
+  -o-animation: cloud_three 100s linear infinite;
+  animation: cloud_three 100s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+@-webkit-keyframes sky_background {
+  0% {
+	background: #007fd5;
+	color: #007fd5
+  }
+  50% {
+	background: #000;
+	color: #a3d9ff
+  }
+  100% {
+	background: #007fd5;
+	color: #007fd5
+  }
+}
+@-moz-keyframes sky_background {
+  0% {
+	background: #007fd5;
+	color: #007fd5
+  }
+  50% {
+	background: #000;
+	color: #a3d9ff
+  }
+  100% {
+	background: #007fd5;
+	color: #007fd5
+  }
+}
+@keyframes sky_background {
+  0% {
+	background: #007fd5;
+	color: #007fd5
+  }
+  50% {
+	background: #000;
+	color: #a3d9ff
+  }
+  100% {
+	background: #007fd5;
+	color: #007fd5
+  }
+}
+
+@-webkit-keyframes cloud_one {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@-moz-keyframes cloud_one {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@keyframes cloud_one {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+
+@-webkit-keyframes cloud_two {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@-moz-keyframes cloud_two {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@keyframes cloud_two {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+
+@-webkit-keyframes cloud_three {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@-moz-keyframes cloud_three {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@keyframes cloud_three {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
