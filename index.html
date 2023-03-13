@@ -16,33 +16,107 @@
             </div>
             <div class="houseWrapper">
                 <div class="floorWrapper">
-                    <div class="doorWrap">
-                        <div class="leftDoor">左门</div>
-                        <div class="rightDoor">右门</div>
-                        <div class="content">
-                            <!-- 欢迎光临，客官里边请... -->
-                            
+                    <div class="left">
+                        <div class="topWall wall"></div>
+                        <div class="leftWall wall"></div>
+                        <div class="rightWall wall"></div>
+                        <div class="bottomWall wall"></div>
+                        <div class="doorWrap">
+                            <div class="leftDoor"></div>
+                            <div class="rightDoor"></div>
+                            <div class="content"></div>
                         </div>
                     </div>
-
-                    <div class="doorWrap">
-                        <div class="leftDoor">左门</div>
-                        <div class="rightDoor">右门</div>
-                        <div class="content">
-                            <!-- 欢迎光临，客官里边请... -->
-                            
+                    <div class="right">
+                        <div class="topWall wall"></div>
+                        <div class="leftWall wall"></div>
+                        <div class="rightWall wall"></div>
+                        <div class="bottomWall wall"></div>
+                        <div class="doorWrap">
+                            <div class="leftDoor"></div>
+                            <div class="rightDoor"></div>
+                            <div class="content"></div>
                         </div>
                     </div>
                 </div>
                 <div class="floorWrapper">
-
+                    <div class="left">
+                        <div class="topWall wall"></div>
+                        <div class="leftWall wall"></div>
+                        <div class="rightWall wall"></div>
+                        <div class="bottomWall wall"></div>
+                        <div class="doorWrap">
+                            <div class="leftDoor"></div>
+                            <div class="rightDoor"></div>
+                            <div class="content">
+                                <canvas class="canvas_left" width='512' height='512'></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="topWall wall"></div>
+                        <div class="leftWall wall"></div>
+                        <div class="rightWall wall"></div>
+                        <div class="bottomWall wall"></div>
+                        <div class="doorWrap">
+                            <div class="leftDoor"></div>
+                            <div class="rightDoor"></div>
+                            <div class="content">
+                                <canvas class="canvas_right" width='512' height='512'></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="floorWrapper">
-
+                    <div class="left">
+                        <div class="topWall wall"></div>
+                        <div class="leftWall wall"></div>
+                        <div class="rightWall wall"></div>
+                        <div class="bottomWall wall"></div>
+                        <div class="doorWrap">
+                            <div class="leftDoor"></div>
+                            <div class="rightDoor"></div>
+                            <div class="content">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="topWall wall"></div>
+                        <div class="leftWall wall"></div>
+                        <div class="rightWall wall"></div>
+                        <div class="bottomWall wall"></div>
+                        <div class="doorWrap">
+                            <div class="leftDoor"></div>
+                            <div class="rightDoor"></div>
+                            <div class="content">
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <canvas width='512' height='512'></canvas>
+            <div class="wheelWrapper">
+                <!-- <img id="ground" src="wheel/2.jpg" /> -->
+                <img class="base" id="bracket" src="wheel/bracket.png" style="width: 179px; height: 264.5px;">
+                <img class="base" id="bracket" src="wheel/bracketsmall.png" style="width: 123.5px; height: 245px;" />
+                <img class="base" id="big-title" src="wheel/big-title.png" style="width: 288.5px; height: 128.5px;"/>
+                <!-- <img class="base" id="title" src="wheel/title.png" /> -->
+                <!-- <img class="base" id="arrow" src="wheel/arrow.png" /> -->
+                <div class="base" id="box">
+                    <img id="fsw" src="wheel/fsw.png" style="width: 100%;" />
+                    <img class="people" id="boy" src="wheel/boy.png" />
+                    <img class="people" id="dog" src="wheel/dog.png" />
+                    <img class="people" id="girl" src="wheel/girl.png" />
+                    <img class="people" id="girls" src="wheel/girls.png" />
+                    <img class="people" id="hairboy" src="wheel/hairboy.png" />
+                    <img class="people" id="mimi" src="wheel/mimi.png" />
+                    <img class="people" id="mudog" src="wheel/mudog.png" />
+                    <img class="people" id="shamegirl" src="wheel/shamegirl.png" />
+                </div>
+            </div>
+            
+            <!-- <canvas width='512' height='512'></canvas> -->
         </div>
         <script>
             class Vector2D extends Array {
@@ -126,7 +200,7 @@
             // 4、调用绘图指令，比如rect 绘制矩形
             // 5、调用fill指令，将绘制内容真正输出到画布上
 
-            const canvas = document.querySelector('canvas');
+            const canvas = document.querySelector('.canvas_left');
             const context = canvas.getContext('2d');
             context.translate(canvas.width / 2, canvas.height);
             context.scale(1, -1);
@@ -185,19 +259,34 @@
             drawBranch(context, v2, 50, 10, 0.3, 3);
 
 
-            context.fillStyle = 'red';
-            context.moveTo(0.75 * canvasWidth / 2, canvasHeight * 0.85)
-            context.arc(0.75 * canvasWidth / 2, canvasHeight * 0.85, 50, 0, 2 * Math.PI)
+            // context.fillStyle = 'red';
+            // context.moveTo(0.75 * canvasWidth / 2, canvasHeight * 0.85)
+            // context.arc(0.75 * canvasWidth / 2, canvasHeight * 0.85, 50, 0, 2 * Math.PI)
 
             context.fill();
 
-            context.scale(1, -1);
-            context.fillStyle = '#333';
-            context.font = '1.5rem Arial';
-            context.textAlign = 'left';
-            context.fillText(`不经一番寒彻骨，`, - canvasWidth / 2 + 20, - canvasHeight + 30);
-            context.fillText(`怎得梅花扑鼻香。`, - canvasWidth / 2 + 20, - canvasHeight + 60);
+            // context.scale(1, -1);
+            // context.fillStyle = '#333';
+            // context.font = '1.5rem Arial';
+            // context.textAlign = 'left';
+            // context.fillText(`不经一番寒彻骨，`, - canvasWidth / 2 + 20, - canvasHeight + 30);
+            // context.fillText(`怎得梅花扑鼻香。`, - canvasWidth / 2 + 20, - canvasHeight + 60);
 
+
+            const canvasRight = document.querySelector('.canvas_right');
+            const contextRihgt = canvasRight.getContext('2d');
+            contextRihgt.translate(canvasRight.width / 2, canvasRight.height);
+            contextRihgt.scale(1, -1);
+            contextRihgt.lineCap = 'round';
+
+            const canvasRightWidth  = canvasRight.width;
+            const canvasRightHeight  = canvasRight.height;
+
+            const v3 = new Vector2D(0, 0);
+            drawBranch(contextRihgt, v3, 50, 10, 1, 3);
+
+            const v4 = new Vector2D(-250, -150);
+            drawBranch(contextRihgt, v4, 50, 8, 0.5, 3);
         </script>
   </body>
 </html>
